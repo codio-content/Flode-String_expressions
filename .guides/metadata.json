@@ -1,0 +1,122 @@
+{
+ "sections": [
+  {
+   "id": "96721698-6eb4-cf8f-67e6-c1ee84d9a098",
+   "title": "What is a string?",
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    },
+    {
+     "path": "example.flode",
+     "panel": 0,
+     "action": "open"
+    }
+   ],
+   "layout": "2-panels-tree",
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/What-is-a-string--9672.md",
+   "chapter": false,
+   "reset": []
+  },
+  {
+   "id": "b5dc78b6-d43c-bafd-c119-22fff5221d5",
+   "title": "Challenge",
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    },
+    {
+     "path": "basic-string.flode",
+     "panel": 0,
+     "action": "open"
+    }
+   ],
+   "layout": "",
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/Challenge-b5dc.md",
+   "chapter": false,
+   "reset": []
+  },
+  {
+   "id": "e8723332-eb6f-91c7-4e47-349d9eff1a0b",
+   "title": "Joining strings",
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    },
+    {
+     "path": "join-string1.flode",
+     "panel": 0,
+     "action": "open"
+    }
+   ],
+   "layout": "",
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/Joining-strings-e872.md",
+   "chapter": false,
+   "reset": []
+  },
+  {
+   "id": "1db7eb8a-f978-425c-f02a-c04df128c417",
+   "title": "Joining more strings",
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    },
+    {
+     "path": "join-string2.flode",
+     "panel": 0,
+     "action": "open"
+    }
+   ],
+   "layout": "",
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/Joining-more-strings-1db7.md",
+   "chapter": false,
+   "reset": []
+  },
+  {
+   "id": "1c97bafe-d501-ffdf-266b-a5f796483d2",
+   "title": "Strings containing numbers",
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    },
+    {
+     "path": "strnum.flode",
+     "panel": 0,
+     "action": "open"
+    }
+   ],
+   "layout": "",
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/Strings-containing-numbers-1c97.md",
+   "chapter": false,
+   "reset": []
+  },
+  {
+   "id": "796d3f77-f08a-28c1-8b1b-32d0dba58ce0",
+   "title": "More later",
+   "files": [],
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/More-later-796d.md",
+   "chapter": false,
+   "reset": []
+  }
+ ],
+ "theme": "light",
+ "scripts": [],
+ "lexikonTopic": ""
+}
