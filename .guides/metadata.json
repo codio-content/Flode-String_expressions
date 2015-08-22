@@ -9,7 +9,7 @@
      "action": "close"
     },
     {
-     "path": "example.flode",
+     "path": "1-str/example.flode",
      "panel": 0,
      "action": "open"
     }
@@ -18,12 +18,72 @@
    "path": [],
    "type": "markdown",
    "content-file": ".guides/content/What-is-a-string--9672.md",
+   "chapter": true,
+   "reset": [
+    "1-str"
+   ]
+  },
+  {
+   "id": "d99c5ab1-99ec-c45b-6b72-8d01f9fdbf80",
+   "title": "String addition",
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    },
+    {
+     "path": "1-str/example2.flode",
+     "panel": 0,
+     "action": "open"
+    }
+   ],
+   "layout": "",
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/String-addition-d99c.md",
    "chapter": false,
    "reset": []
   },
   {
+   "id": "341963f0-9f75-9dc4-8e16-3cdb2f31bdcc",
+   "title": "Numbers as strings",
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    },
+    {
+     "path": "1-str/example3.flode",
+     "panel": 0,
+     "action": "open"
+    }
+   ],
+   "layout": "",
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/Numbers-as-strings-3419.md",
+   "chapter": false,
+   "reset": []
+  },
+  {
+   "id": "b55f86d-9ebc-9f19-5e69-72e389837e5",
+   "title": "Challenges",
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    }
+   ],
+   "layout": "",
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/Challenges-b55f.md",
+   "chapter": true,
+   "reset": []
+  },
+  {
    "id": "b5dc78b6-d43c-bafd-c119-22fff5221d5",
-   "title": "Challenge",
+   "title": "Basic string",
    "files": [
     {
      "path": "#tabs",
@@ -38,7 +98,7 @@
    "layout": "",
    "path": [],
    "type": "markdown",
-   "content-file": ".guides/content/Challenge-b5dc.md",
+   "content-file": ".guides/content/Basic-string-b5dc.md",
    "chapter": false,
    "reset": []
   },
@@ -108,7 +168,13 @@
   {
    "id": "796d3f77-f08a-28c1-8b1b-32d0dba58ce0",
    "title": "More later",
-   "files": [],
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    }
+   ],
+   "layout": "",
    "path": [],
    "type": "markdown",
    "content-file": ".guides/content/More-later-796d.md",

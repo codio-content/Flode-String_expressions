@@ -3,7 +3,7 @@ A string is a piece of text. It can be a character, a word or a load of words.
 Here are some valid strings.
 
 ```javascript
-a
+h
 hello
 hello world
 oh no!%$^%$

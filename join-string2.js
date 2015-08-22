@@ -1,24 +1,31 @@
-// Setup
-names = ['John', 'Alice', 'Mike', 'Susan', 'Richard', 'Sally']
-index = Math.floor(Math.random() * 6)
+// Load testing framework
+var testing = require('/home/codio/workspace/.guides/test-fw/testing')
 
-// Prepare inputs
-inp0 = 'Hello'
-inp1 = names[index]
+// Set up inputs and expected result
+var str = ['Tester', 'Another string', 'Friday', 'Cold', 'Temperature', 'Mite', 'End']
+var str2 = ['Alice', 'Bob', 'Tariq', 'Shahneila', 'Susan', 'Mike', 'Calista']
+var index = Math.floor(Math.random() * 6 )
+var index2 = Math.floor(Math.random() * 6 )
+var a1 = str[index]
+var a2 = str[index2]
+var expected = str[index] + ' ' + str[index2]
 
-// Expected output
-result = inp0 + ' ' + inp1
+// Call chart
+var output = testing.RunGraphWithInputs('join-string2.flode', [a1, a2])
 
-// Get output
-out0 = 'Hello Richard'
+// Check for no output
+if (output.length == 0) {
+  console.log('Your chart did not output any results.')
+  process.exit(1)
+}
 
-// Check
-if (out0 == result) {
-  console.log('Well done!!')
-  process.exit(0)
+// Evaluate
+if (output[0] === expected) {
+  console.log('Well done!');
+  process.exit(0);
 }
 else {
-  console.log('You returned "' + out0 + '" but we expected "' + result + '"' )
+  console.log('You got this wrong! We passed in "' + a1 + '" and "' + a2 + '" then got an output of "' + output[0] + '" instead of "' + expected + '".')
   process.exit(1)
 }
 

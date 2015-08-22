@@ -1,22 +1,27 @@
-// Setup
-i0 = Math.floor(Math.random() * 100)
-i1 = Math.floor(Math.random() * 100)
-inp0 = i0.toString()
-inp1 = i1.toString()
+// Load testing framework
+var testing = require('/home/codio/workspace/.guides/test-fw/testing')
 
-// Expected output
-result = inp0 + inp1
+// Set up inputs and expected result
+var a = Math.floor(Math.random() * 10 )
+var b = Math.floor(Math.random() * 10 )
+var expected = '' + a + b
 
-// Get output
-out0 = 111
+// Call chart
+var output = testing.RunGraphWithInputs('strnum.flode', [a, b])
 
-// Check
-if (out0 === result) {
-  console.log('Well done!!')
-  process.exit(0)
+// Check for no output
+if (output.length == 0) {
+  console.log('Your chart did not output any results.')
+  process.exit(1)
+}
+
+// Evaluate
+if (output[0] === expected) {
+  console.log('Well done!');
+  process.exit(0);
 }
 else {
-  console.log('We input ' + inp0 + ' and ' + inp1 + '. You returned "' + out0 + '" but we expected "' + result + '"' )
+  console.log('You got this wrong! We passed in ' + a + ' and ' + b + ' then got an output of "' + output[0] + '" instead of "' + expected + '".')
   process.exit(1)
 }
 
