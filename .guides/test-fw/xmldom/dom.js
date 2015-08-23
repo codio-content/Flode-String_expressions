@@ -267,12 +267,12 @@ DOMImplementation.prototype = {
 	// Introduced in DOM Level 2:
 	createDocument:function(namespaceURI,  qualifiedName, doctype){// raises:INVALID_CHARACTER_ERR,NAMESPACE_ERR,WRONG_DOCUMENT_ERR
 		var doc = new Document();
+		doc.implementation = this;
+		doc.childNodes = new NodeList();
 		doc.doctype = doctype;
 		if(doctype){
 			doc.appendChild(doctype);
 		}
-		doc.implementation = this;
-		doc.childNodes = new NodeList();
 		if(qualifiedName){
 			var root = doc.createElementNS(namespaceURI,qualifiedName);
 			doc.appendChild(root);
@@ -759,7 +759,7 @@ Element.prototype = {
 	},
 	setAttributeNS : function(namespaceURI, qualifiedName, value){
 		var attr = this.ownerDocument.createAttributeNS(namespaceURI, qualifiedName);
-		attr.value = attr.nodeValue = value;
+		attr.value = attr.nodeValue = "" + value;
 		this.setAttributeNode(attr)
 	},
 	getAttributeNodeNS : function(namespaceURI, localName){
@@ -781,7 +781,7 @@ Element.prototype = {
 		return new LiveNodeList(this,function(base){
 			var ls = [];
 			_visitNode(base,function(node){
-				if(node !== base && node.nodeType === ELEMENT_NODE && node.namespaceURI === namespaceURI && (localName === '*' || node.localName == localName)){
+				if(node !== base && node.nodeType === ELEMENT_NODE && (namespaceURI === '*' || node.namespaceURI === namespaceURI) && (localName === '*' || node.localName == localName)){
 					ls.push(node);
 				}
 			});
@@ -922,7 +922,7 @@ function serializeToString(node,buf){
 		for(var i=0;i<len;i++){
 			serializeToString(attrs.item(i),buf,isHTML);
 		}
-		if(child || isHTML && !/^(?:meta|link|img|br|hr|input)$/i.test(nodeName)){
+		if(child || isHTML && !/^(?:meta|link|img|br|hr|input|button)$/i.test(nodeName)){
 			buf.push('>');
 			//if is cdata child node
 			if(isHTML && /^script$/i.test(nodeName)){

@@ -1,6 +1,6 @@
 // Used to load graph model from save file
 var fs = require('fs');
-var xmldom = require('xmldom');
+var xmldom = require('./xmldom/dom-parser');
 var mxgraph = require('./mxgraph');
 // Used to run tests
 var constants = require('./constants');
