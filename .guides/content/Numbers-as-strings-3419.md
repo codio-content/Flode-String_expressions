@@ -17,5 +17,5 @@ See the difference? In the first example, we are dealing with numbers (there are
 ## Number + String
 There is another case, shown in the Flode chart on the left, where we add a string and a number together.
 
-In Flode (and Javascript) if any of the variables you are adding together is a string, the the resultant value also a string.
+In Flode (and Javascript) if **any** parts of the expression you are adding together is a string, the the resultant value also a string.
 

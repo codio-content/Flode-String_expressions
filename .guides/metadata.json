@@ -2,26 +2,62 @@
  "sections": [
   {
    "id": "96721698-6eb4-cf8f-67e6-c1ee84d9a098",
-   "title": "What is a string?",
+   "title": "String expressions",
+   "files": [
+    {
+     "path": "#tabs",
+     "action": "close"
+    }
+   ],
+   "layout": "1-panel",
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/String-expressions-9672.md",
+   "chapter": true,
+   "reset": [
+    "1-str"
+   ]
+  },
+  {
+   "id": "ab92c9fb-9b0d-6527-4b6a-7f60fffbc9d",
+   "title": "Preparation video",
+   "files": [],
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/Preparation-video-ab92.md",
+   "chapter": false,
+   "reset": []
+  },
+  {
+   "id": "94b2af44-1020-ddf8-34ff-bca3ae9e6fc9",
+   "title": "Strings overview",
+   "files": [],
+   "path": [],
+   "type": "markdown",
+   "content-file": ".guides/content/Strings-overview-94b2.md",
+   "chapter": false,
+   "reset": []
+  },
+  {
+   "id": "ffb6a70a-c8a5-82da-cdf-a5d2afc6d8b2",
+   "title": "Experiments",
    "files": [
     {
      "path": "#tabs",
      "action": "close"
     },
     {
-     "path": "1-str/example.flode",
+     "path": "experiment.flode",
      "panel": 0,
      "action": "open"
     }
    ],
-   "layout": "2-panels-tree",
+   "layout": "2-panels",
    "path": [],
    "type": "markdown",
-   "content-file": ".guides/content/What-is-a-string--9672.md",
-   "chapter": true,
-   "reset": [
-    "1-str"
-   ]
+   "content-file": ".guides/content/Experiments-ffb6.md",
+   "chapter": false,
+   "reset": []
   },
   {
    "id": "d99c5ab1-99ec-c45b-6b72-8d01f9fdbf80",
@@ -167,7 +203,7 @@
   },
   {
    "id": "796d3f77-f08a-28c1-8b1b-32d0dba58ce0",
-   "title": "More later",
+   "title": "All done!!",
    "files": [
     {
      "path": "#tabs",
