@@ -27,5 +27,5 @@ exports.SetWindowVisibility = function() {
 };
 
 exports.ClearOutput = function() {
-  // do nothing
+  exports.Output = [];
 };
