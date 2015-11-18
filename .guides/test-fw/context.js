@@ -5,16 +5,13 @@ exports.ExecutionContext = {
   isRunning: false,
   variables: {},
   inputVariables: [],
-  inputVariablesInitial: [],
   
   // Called by user-generated code
 
   get: function(variable) {
-    if (this.isInputVariable(variable)) {
-      var inputVariableId = this.getInputVariableId(variable);
-      if (inputVariableId < this.inputVariables.length) {
-        return this.inputVariables[inputVariableId];
-      }
+    var inputVariableIndex = this.getInputVariableIndex(variable);
+    if (inputVariableIndex !== -1) {
+      return this.inputVariables[inputVariableIndex].value;
     } else if (typeof this.variables[variable] !== 'undefined') {
       return this.variables[variable];
     }
@@ -22,11 +19,9 @@ exports.ExecutionContext = {
   },
 
   set: function(variable, value) {
-    if (this.isInputVariable(variable)) {
-      var inputVariableId = this.getInputVariableId(variable);
-      if (inputVariableId < this.inputVariables.length) {
-        this.inputVariables[inputVariableId] = value;
-      }
+    var inputVariableIndex = this.getInputVariableIndex(variable);
+    if (inputVariableIndex !== -1) {
+      this.inputVariables[inputVariableIndex].value = value;
     } else {
       this.variables[variable] = value;
     }
@@ -52,38 +47,46 @@ exports.ExecutionContext = {
 
   printBlankVariables: function() {
     windows.SetVariableList(this.variables, false);
-    windows.SetInputVariableList(this.inputVariablesInitial);
+    windows.SetInputVariableList(this.inputVariables, true);
   },
 
   printVariables: function() {
     windows.SetVariableList(this.variables, true);
-    windows.SetInputVariableList(this.inputVariables);
+    windows.SetInputVariableList(this.inputVariables, false);
   },
 
   // Input variable operations
   
-  isInputVariable: function(variable) {
-    return variable.indexOf(constants.INPUT_VARIABLE_PREFIX) !== -1;
+  getInputVariableIndex: function(name) {
+    for (var i = 0; i < this.inputVariables.length; ++i) {
+      if (this.inputVariables[i].name === name) {
+        return i;
+      }
+    }
+    return -1;
   },
 
-  getInputVariableId: function(variable) {
-    return parseInt(variable.replace(constants.INPUT_VARIABLE_PREFIX, ''));
+  clearInputVariables: function() {
+    this.inputVariables = [];
   },
 
-  getInputVariable: function(id) {
-    return this.inputVariablesInitial[id];
-  },
-
-  setInputVariable: function(id, value) {
-    this.inputVariablesInitial[id] = value;
-    this.inputVariables[id] = value;
-    windows.SetInputVariableList(this.inputVariablesInitial);
+  setInputVariable: function(name, value) {
+    var inputVariableIndex = this.getInputVariableIndex(name);
+    if (inputVariableIndex !== -1) {
+      var inputVariable = this.inputVariables[inputVariableIndex];
+      inputVariable.value = value;
+      inputVariable.initialValue = value;
+      return inputVariableIndex;
+    }
+    
+    this.inputVariables.push({name: name, value: value, initialValue: value});
+    return this.inputVariables.length - 1;
   },
 
   resetInputVariables: function() {
-    for (var i = 0; i < this.inputVariablesInitial.length; ++i) {
-      var inputVariable = this.inputVariablesInitial[i];
-      this.inputVariables[i] = Array.isArray(inputVariable) ? inputVariable.slice() : inputVariable;
+    for (var i = 0; i < this.inputVariables.length; ++i) {
+      var initialValue = this.inputVariables[i].initialValue;
+      this.inputVariables[i].value = Array.isArray(initialValue) ? initialValue.slice() : initialValue;
     }
   },
   

@@ -22,10 +22,6 @@ exports.GetStartCell = function(graph) {
   return startCell.length ? startCell[0] : null;
 };
 
-exports.GetInputCells = function(graph) {
-  return GetVertexCellsOfType(graph, constants.CELL_TYPE_INPUT);
-};
-
 exports.GetCellById = function(graph, id) {
   return graph.model.filterDescendants(function(cell) {
     return cell.id == id;
@@ -67,6 +63,66 @@ exports.GetGraphBounds = function(graph) {
   return new mxRectangle(minx, miny, maxx - minx, maxy - miny);
 };
 
+exports.GetCellLineLength = function(graph, cell) {
+  var state = graph.view.getState(cell);
+  if (state) {
+    var scale = graph.view.scale;
+    var size = mxUtils.getValue(state.style, mxConstants.STYLE_FONTSIZE, mxConstants.DEFAULT_FONTSIZE) * scale;
+    var bounds = state.shape.getLabelBounds(state.getPerimeterBounds());
+    return Math.floor((bounds.width / size) * constants.FONT_SCALE_FACTOR);
+  }
+  return 0;
+};
+
+exports.WrapText = function(text, lineLength) {
+  // Find all the separators (equivalent to split with separator distinction)
+  var separators = [{index: 0, isNewLine: false}];
+  var pos = 0;
+  while (true) {
+    var spaceIndex = text.indexOf(' ', pos);
+    var newLineIndex = text.indexOf('\n', pos);
+    if (newLineIndex >= 0 && (newLineIndex <= spaceIndex + 1 || spaceIndex < 0)) {
+      pos = newLineIndex + 1;
+      separators.push({index: pos, isNewLine: true});
+    } else if (spaceIndex >= 0) {
+      pos = spaceIndex + 1;
+      separators.push({index: pos, isNewLine: false});
+    } else {
+      if (pos === 0) {
+        return text;
+      }
+      break;
+    }
+  }
+  separators.push({index: text.length, isNewLine: false});
+  // Wrap the text taking into account user input new lines
+  var out = '';
+  var curLength = 0;
+  var prevSeparator = separators[0];
+  for (var i = 1; i < separators.length; ++i) {
+    var separator = separators[i];
+
+    var word = text.slice(prevSeparator.index, separator.index).trim();
+    var wordLength = word.length + 1;
+
+    if (curLength + wordLength > lineLength && !prevSeparator.isNewLine) {
+      out += '\n';
+      curLength = 0;
+    }
+
+    out += word + ' ';
+    curLength += wordLength;
+
+    if (separator.isNewLine) {
+      out += '\n';
+      curLength = 0;
+    }
+
+    prevSeparator = separator;
+  }
+  return out.trim();
+};
+
 /* Constants helpers */
 
 var GetArrayValue = function(array, index) {
@@ -92,7 +148,19 @@ exports.GetCellIcon = function(type) {
   return GetArrayValue(constants.CELL_ICONS, type);
 };
 
+exports.GetStartingInputName = function() {
+  return constants.STARTING_INPUT_NAME + ++constants.STARTING_INPUT_NUMBER;
+};
+
 /* Execution helpers */
+
+exports.CheckProgram = function(program) {
+  new Function(program);
+};
+
+exports.RunProgram = function(compiledProgram, context) {
+  return new Function(compiledProgram).call(context);
+};
 
 exports.RunProgramSegmentAndGetNext = function(cell) {
   delete cell.f2cError;
@@ -101,22 +169,22 @@ exports.RunProgramSegmentAndGetNext = function(cell) {
     var returnValue = null;
     switch (cell.f2cType) {
       case constants.CELL_TYPE_OP: {
-        new Function(cell.f2cCompiled).call(context);
+        exports.RunProgram(cell.f2cCompiled, context);
         if (context.isRunning) {
           context.printVariables();
         }
         break;
       } case constants.CELL_TYPE_IF: {
-        returnValue = new Function(cell.f2cCompiled).call(context);
+        returnValue = exports.RunProgram(cell.f2cCompiled, context);
         break;
       } case constants.CELL_TYPE_DEBUG: {
-        var output = new Function(cell.f2cCompiled).call(context)
+        var output = exports.RunProgram(cell.f2cCompiled, context);
         if (context.isRunning) {
           windows.UpdateOutput(output, constants.OUTPUT_TYPE_DBG);
         }
         break;
       } case constants.CELL_TYPE_OUTPUT: {
-        var output = new Function(cell.f2cCompiled).call(context);
+        var output = exports.RunProgram(cell.f2cCompiled, context);
         if (context.isRunning) {
           windows.UpdateOutput(output, constants.OUTPUT_TYPE_OUT);
         }

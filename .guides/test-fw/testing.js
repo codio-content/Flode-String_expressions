@@ -9,13 +9,13 @@ var helpers = require('./helpers');
 var windows = require('./windows');
 
 exports.RunGraphWithInputs = function(fileName, inputs) {
-  // Set inputs in context
-  for (var i = 0; i < inputs.length; ++i) {
-    context.setInputVariable(i, inputs[i]);
+  var model = LoadGraphModelFromSaveFile(fileName);
+  if (!model) {
+    return [];
   }
 
   // Create graph
-  var graph = {model: LoadGraphModelFromSaveFile(fileName)};
+  var graph = {model: model};
   var cell = helpers.GetStartCell(graph);
   var numSteps = constants.MAX_EXECUTABLE_CELLS;
   
@@ -23,7 +23,15 @@ exports.RunGraphWithInputs = function(fileName, inputs) {
   context.setIsRunning(true);
   while (cell !== null && numSteps > 0) {
     if (cell.f2cCompiled === constants.SYNTAX_ERROR_TAG) {
-      return;
+      return [];
+    }
+    if (cell.f2cType === constants.CELL_TYPE_INPUT) {
+      var inputName = cell.children[0];
+      if (inputName.f2cCompiled === constants.SYNTAX_ERROR_TAG) {
+        return;
+      }
+      var idx = context.setInputVariable(inputName.f2cCompiled, '');
+      context.inputVariables[idx].value = inputs[idx];
     }
     cell = helpers.RunProgramSegmentAndGetNext(cell);
     numSteps--;
@@ -34,7 +42,19 @@ exports.RunGraphWithInputs = function(fileName, inputs) {
 };
 
 var LoadGraphModelFromSaveFile = function(fileName) {
-  var data = fs.readFileSync(fileName, 'utf8');
+  var data = null;
+  try {
+    data = fs.readFileSync(fileName, 'utf8');
+  } catch (e) {
+    console.log('Couldn\'t read file: ' + fileName);
+    return null;
+  }
+
+  if (data === '') {
+    console.log('File: ' + fileName + ' is empty');
+    return null;
+  }
+
   var parsed = new xmldom.DOMParser().parseFromString(data);
   var encoded = parsed.childNodes[0];
   encoded.documentElement = encoded;
