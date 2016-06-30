@@ -1,0 +1,66 @@
+[
+ {
+  "type": "test",
+  "taskId": "test-3201649420",
+  "source": {
+   "showName": false,
+   "answers": [],
+   "tokens": {
+    "blank": [],
+    "text": []
+   },
+   "name": "Join strings 2",
+   "instructions": "We will provide 2 strings to your Flode chart. \n\nYour job is to join the strings together so you get a single string with a space between them. \n\nThis is a common case in coding and you will need to create your output by joining the inputs and adding the space in the middle. ",
+   "command": "node join-string2.js",
+   "points": 1
+  }
+ },
+ {
+  "type": "test",
+  "taskId": "test-3284309384",
+  "source": {
+   "showName": false,
+   "answers": [],
+   "tokens": {
+    "blank": [],
+    "text": []
+   },
+   "name": "Basic string",
+   "instructions": "We are not providing any inputs to you at all. All you need to do is to output the string 'Hello World'. \n\nProgramming is *case sensitive*, which means that upper case letters (capital letters) and lower case letters (not capitals) are different characters. So, 'Hello World' is not the same as 'hello world'.",
+   "command": "node basic-string.js",
+   "points": 1
+  }
+ },
+ {
+  "type": "test",
+  "taskId": "test-4040218170",
+  "source": {
+   "showName": false,
+   "answers": [],
+   "tokens": {
+    "blank": [],
+    "text": []
+   },
+   "name": "Join string 1",
+   "instructions": "We are providing a string as an input to your Flode chart. \n\nYour job is to add the string `, hello!` to the string we provide you and then output it.\n\nMake sure you include the space after the comma! ",
+   "command": "node join-string1.js",
+   "points": 1
+  }
+ },
+ {
+  "type": "test",
+  "taskId": "test-434429850",
+  "source": {
+   "showName": false,
+   "answers": [],
+   "tokens": {
+    "blank": [],
+    "text": []
+   },
+   "name": "String numbers",
+   "instructions": "We are passing in two **numbers** as inputs. You should join them together into a single string.\n\n**Tip:** if you simply add these numbers together, they will be added together as numbers, not a string. Can you figure out the trick to ensure they are added together as a string? You should experiment in the chart and you will hopefully figure the trick out.\n",
+   "command": "node strnum.js",
+   "points": 1
+  }
+ }
+]
