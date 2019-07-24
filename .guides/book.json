@@ -1,0 +1,81 @@
+{
+ "name": "Flode-String_expressions",
+ "children": [
+  {
+   "title": "String expressions",
+   "id": "96721698-6eb4-cf8f-67e6-c1ee84d9a098",
+   "pageId": "96721698-6eb4-cf8f-67e6-c1ee84d9a098",
+   "type": "chapter",
+   "children": [
+    {
+     "title": "Preparation video",
+     "id": "ab92c9fb-9b0d-6527-4b6a-7f60fffbc9d",
+     "pageId": "ab92c9fb-9b0d-6527-4b6a-7f60fffbc9d",
+     "type": "page"
+    },
+    {
+     "title": "Strings overview",
+     "id": "94b2af44-1020-ddf8-34ff-bca3ae9e6fc9",
+     "pageId": "94b2af44-1020-ddf8-34ff-bca3ae9e6fc9",
+     "type": "page"
+    },
+    {
+     "title": "Experiments",
+     "id": "ffb6a70a-c8a5-82da-cdf-a5d2afc6d8b2",
+     "pageId": "ffb6a70a-c8a5-82da-cdf-a5d2afc6d8b2",
+     "type": "page"
+    },
+    {
+     "title": "String addition",
+     "id": "d99c5ab1-99ec-c45b-6b72-8d01f9fdbf80",
+     "pageId": "d99c5ab1-99ec-c45b-6b72-8d01f9fdbf80",
+     "type": "page"
+    },
+    {
+     "title": "Numbers as strings",
+     "id": "341963f0-9f75-9dc4-8e16-3cdb2f31bdcc",
+     "pageId": "341963f0-9f75-9dc4-8e16-3cdb2f31bdcc",
+     "type": "page"
+    }
+   ]
+  },
+  {
+   "title": "Challenges",
+   "id": "b55f86d-9ebc-9f19-5e69-72e389837e5",
+   "pageId": "b55f86d-9ebc-9f19-5e69-72e389837e5",
+   "type": "chapter",
+   "children": [
+    {
+     "title": "Basic string",
+     "id": "b5dc78b6-d43c-bafd-c119-22fff5221d5",
+     "pageId": "b5dc78b6-d43c-bafd-c119-22fff5221d5",
+     "type": "page"
+    },
+    {
+     "title": "Joining strings",
+     "id": "e8723332-eb6f-91c7-4e47-349d9eff1a0b",
+     "pageId": "e8723332-eb6f-91c7-4e47-349d9eff1a0b",
+     "type": "page"
+    },
+    {
+     "title": "Joining more strings",
+     "id": "1db7eb8a-f978-425c-f02a-c04df128c417",
+     "pageId": "1db7eb8a-f978-425c-f02a-c04df128c417",
+     "type": "page"
+    },
+    {
+     "title": "Strings containing numbers",
+     "id": "1c97bafe-d501-ffdf-266b-a5f796483d2",
+     "pageId": "1c97bafe-d501-ffdf-266b-a5f796483d2",
+     "type": "page"
+    },
+    {
+     "title": "All done!!",
+     "id": "796d3f77-f08a-28c1-8b1b-32d0dba58ce0",
+     "pageId": "796d3f77-f08a-28c1-8b1b-32d0dba58ce0",
+     "type": "page"
+    }
+   ]
+  }
+ ]
+}
